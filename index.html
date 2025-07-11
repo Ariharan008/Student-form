@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+       
+ 
+        .h1 {
+            margin-left: 550px;
+        }
+ 
+        .t3 {
+            margin-left: 550px;
+
+        }
+
+        .t4 {
+            margin-top: 10px;
+            margin-left: 500px;
+
+        }  
+
+        .select {
+            width: 100%;
+        }
+
+        .save {
+            width: 100%;
+            background-color: aqua;
+        }
+
+        @media screen and (max-width:900px) {
+            .h1{
+                margin-left: 320px;
+            }
+            .t3 {
+                margin-left: 320px;
+            }
+
+            .t4 {
+                margin-left: 260px;
+            }
+        }
+
+        @media screen and (max-width:600px) {
+            .h1{
+                margin-left: 120px;
+            }
+            .t3 {
+                margin-left: 120px;
+            }
+
+            .t4 {
+                margin-left: 50px;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <div class="border">
+        <div class="h1">
+            <h1>STUDENT FORM</h1>
+        </div>
+        <div class="t3">
+            <table border="1" class="t1">
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" id="name" placeholder=" Enter your name"></td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td><input type="number" id="age" placeholder="Enter your age"></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <input type="radio" name="gender" value="male"> Male
+                        <input type="radio" name="gender" value="female"> Female
+                    </td>
+                </tr>
+                <tr>
+                    <td>Course</td>
+                    <td><select class="select" id="Course">
+                            <option>JAVA</option>
+                            <option>HTML</option>
+                            <option>NODE JS</option>
+                            <option>SCRIPT JS</option>
+                            <option>PYTHON</option>
+                            <option>C++</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" id="email" placeholder="User@gmail.com"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button class="save">save</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="t4">
+            <table border="1" class="t2" id="t2">
+                <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>AGE</th>
+                        <th>COURSE</th>
+                        <th>GENDER</th>
+                        <th>EMAIL</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+</div>
+    </div>
+    <script>
+        //javascript starts
+
+        var save = document.querySelector(".save")
+        var t2 = document.querySelector("#t2 tbody")
+        save.addEventListener("click", function () {
+            var name = document.getElementById("name").value
+            var age = document.getElementById("age").value
+            var email = document.getElementById("email").value
+            var course = document.getElementById("Course").value
+            var genderRadio = document.querySelector('input[name="gender"]:checked');
+            var gender = genderRadio ? genderRadio.value : "";
+
+
+            if (!name || !age || !email || !gender) {
+                alert("Please fill all fields.");
+                return;
+            }
+
+            var tr = document.createElement("tr")
+            tr.innerHTML = `
+        <td>${name}</td>
+        <td>${age}</td>
+        <td>${course}</td>
+        <td>${gender}</td>
+        <td>${email}</td>
+        <td><button style="backgroung-color:red color:white" onclick="this.parentElement.parentElement.remove()">Delete</button></td>
+      `
+            t2.appendChild(tr)
+
+        })
+
+    </script>
+
+</body>
+
+</html>
